@@ -15,48 +15,86 @@
         padding: 0;
       }
       #container {
+        flex-direction: column;
         align-items: center;
         display: flex;
+        font-size: 25px;
         height: 100%;
         justify-content: center;
       }
-      #countdown {
-        color: #6c6c6c;
-        font-size: 30px;
+      #container h2 {
         text-align: center;
       }
-      #countdown b {
-        color: black;
+      #countdown {
+        border: 1px solid #999;
+        box-shadow: 3px 2px 8px #ddd;
+        border-radius: 5px;
+        padding: 10px;
+      }
+      #countdown > div {
+        display: flex;
+        justify-content: center;
+      }
+      #countdown label {
+        font-size: 20px;
+        color: #999;
+        padding-right: 5px;
+      }
+      @media (max-width: 350px) {
+        #countdown > div {
+          flex-direction: column;
+        }
       }
     </style>
   </head>
   <body>
     <div id="container">
-      <span id="countdown"></span>
+      <h2>Time till Friday 5pm:</h2>
+      <div id="countdown">
+        <div>
+          <div>
+            <span id="hours">hh</span>
+            <label>Hours</label>
+          </div>
+          <div>
+            <span id="min">mm</span>
+            <label>Minutes</label>
+          </div>
+          <div>
+            <span id="sec">se</span>
+            <label>Seconds</label>
+          </div>
+        </div>
+      </div>
     </div>
     <script>
-      const countdown = document.querySelector("#countdown");
+      const hoursContainer = document.querySelector("#hours");
+      const minContainer = document.querySelector("#min");
+      const secContainer = document.querySelector("#sec");
+
+      function pad(nr) {
+        const str = "0" + nr;
+        return str.slice(str.length - 2, str.length);
+      }
+
       function calc() {
         const date = new Date();
         const resultDate = new Date(date.getTime());
         resultDate.setDate(date.getDate() + ((7 + 5 - date.getDay()) % 7));
-
         resultDate.setHours(17);
         resultDate.setMinutes(0);
 
-        const diff = (Date.now() - resultDate) / -1000 / 60 / 60;
-        const hours = Math.floor(diff);
-        const min = Math.floor(60 * (diff - hours));
+        const diff = resultDate - Date.now() - 1000;
+        const sec = 60 - new Date().getSeconds();
+        const min = Math.floor((diff / 1000 / 60) % 60);
+        const hours = Math.floor(diff / (1000 * 60 * 60));
 
-        countdown.innerHTML =
-          "<b>" +
-          hours +
-          "</b> hours and <b>" +
-          min +
-          "</b> minutes till Friday 5pm";
+        hoursContainer.innerHTML = pad(hours);
+        minContainer.innerHTML = pad(min);
+        secContainer.innerHTML = pad(sec);
       }
       calc();
-      setInterval(calc, 60000);
+      setInterval(calc, 1000);
     </script>
   </body>
 </html>

@@ -6,8 +6,56 @@
     <meta name="author" content="" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link href="css/style.css" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        font-family: Arial, sans-serif;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+      }
+      #countdown {
+        font-size: 30px;
+        color: #6c6c6c;
+      }
+      #countdown b {
+        color: black;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div id="container">
+      <span id="countdown"></span>
+    </div>
+    <script>
+      const countdown = document.querySelector("#countdown");
+      function calc() {
+        const date = new Date();
+        const resultDate = new Date(date.getTime());
+        resultDate.setDate(date.getDate() + ((7 + 5 - date.getDay()) % 7));
+
+        resultDate.setHours(17);
+        resultDate.setMinutes(0);
+
+        const diff = (Date.now() - resultDate) / -1000 / 60 / 60;
+        const hours = Math.floor(diff);
+        const min = Math.floor(60 * (diff - hours));
+
+        countdown.innerHTML =
+          "<b>" +
+          hours +
+          "</b> hours and <b>" +
+          min +
+          "</b> minutes till Friday 5pm";
+      }
+      calc();
+      setInterval(calc, 60000);
+    </script>
+  </body>
 </html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Friday five pm</title>
+    <meta name="author" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html,
+      body {
+        font-family: Arial, sans-serif;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        font-size: 25px;
+        height: 100%;
+        justify-content: center;
+      }
+      #container h2 {
+        text-align: center;
+      }
+      #countdown {
+        border: 1px solid #999;
+        box-shadow: 3px 2px 8px #ddd;
+        border-radius: 5px;
+        padding: 10px;
+      }
+      #countdown > div {
+        display: flex;
+        justify-content: center;
+      }
+      #countdown label {
+        font-size: 20px;
+        color: #999;
+        padding-right: 5px;
+      }
+      @media (max-width: 350px) {
+        #countdown > div {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h2>Time till Friday 5pm:</h2>
+      <div id="countdown">
+        <div>
+          <div>
+            <span id="hours">hh</span>
+            <label>Hours</label>
+          </div>
+          <div>
+            <span id="min">mm</span>
+            <label>Minutes</label>
+          </div>
+          <div>
+            <span id="sec">se</span>
+            <label>Seconds</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const hoursContainer = document.querySelector("#hours");
+      const minContainer = document.querySelector("#min");
+      const secContainer = document.querySelector("#sec");
+
+      function pad(nr) {
+        const str = "0" + nr;
+        return str.slice(str.length - 2, str.length);
+      }
+
+      function calc() {
+        const date = new Date();
+        const resultDate = new Date(date.getTime());
+        resultDate.setDate(date.getDate() + ((7 + 5 - date.getDay()) % 7));
+        resultDate.setHours(17);
+        resultDate.setMinutes(0);
+
+        const diff = resultDate - Date.now() - 1000;
+        const sec = 60 - new Date().getSeconds();
+        const min = Math.floor((diff / 1000 / 60) % 60);
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+
+        hoursContainer.innerHTML = pad(hours);
+        minContainer.innerHTML = pad(min);
+        secContainer.innerHTML = pad(sec);
+      }
+      calc();
+      setInterval(calc, 1000);
+    </script>
+  </body>
+</html>

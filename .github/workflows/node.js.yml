@@ -24,4 +24,4 @@ jobs:
         node-version: '14.x'
     - run: yarn install
     - run: yarn run build
-    - run: yarn run release -r https://${{ secrets.GITHUB_TOKEN }}@github.com/mrlaessig/mrlaessig.github.io.git
+    - run: yarn run release -r https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY

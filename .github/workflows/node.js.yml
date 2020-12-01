@@ -14,10 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Deploy GitHub Pages
+    - name: Setup git
+      run: |
+        git config user.email "build@cheeseburgers.com"
+        git config user.name "GitHub Action"
+    - name: Setup Node
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
-    - run: yarn install
-    - run: yarn run build
-    - run: yarn run release -r https://${{ secrets.GITHUB_TOKEN }}@github.com/mrlaessig/mrlaessig.github.io.git
+    - name: Deploy page: 
+      run: yarn install
+      run: yarn run build
+      run: yarn run release -r https://${{ secrets.GITHUB_TOKEN }}@github.com/mrlaessig/mrlaessig.github.io.git

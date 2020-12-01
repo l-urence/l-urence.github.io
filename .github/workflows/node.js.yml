@@ -23,7 +23,7 @@ jobs:
         ssh-agent -a $SSH_AUTH_SOCK > /dev/null
         ssh-add - <<< "${{ secrets.DEPLOY_KEY }}"
         git config user.name Deployment Job
-        git config user.email build@byteburgers.com
+        git config user.email cheese@byteburgers.com
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:

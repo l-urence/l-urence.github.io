@@ -2,10 +2,82 @@ import React, { useEffect } from "react";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-      html,body{color:#333;margin:0;padding:0;font-family:sans-serif;text-align:center;height:100%}.vCenter{table-layout:fixed;display:table;height:90%;width:100%;overflow:hidden}.vCell{display:table-cell;vertical-align:middle;}a{color:#333;text-translateX(2px);text-decoration:none}.logo{transform:rotate(30deg)}ul{list-style-type:none;padding:0}li{display:inline-block}li:after{content:' | '}li:last-child:after{content:none}li:hover{text-decoration:underline}.logo:hover{animation:shake .82s cubic-bezier(.36,.07,.19,.97) both;transform:rotate(30deg) backface-visibility: hidden;perspective:1000px}@keyframes shake{10%,90%{transform:translate3d(-1px,0,0) rotate(30deg)}20%,80%{transform:translate3d(2px,0,0) rotate(30deg)}30%,50%,70%{transform:translate3d(-4px,0,0) rotate(30deg)}40%,60%{transform:translate3d(4px,0,0) rotate(30deg)}}
-#root {
-  height: 100%;
-}
+   html,body{
+      color:#333;
+      margin:0;
+      padding:0;
+      font-family:sans-serif;
+      text-align:center;
+      height:100%
+  }
+  #root {
+       height: 100%;
+  }
+  
+  .vCenter{
+      table-layout:fixed;
+      display:table;
+      height:90%;
+      width:100%;
+      overflow:hidden
+  }
+  .vCell{
+      display:table-cell;
+      vertical-align:middle;
+  }
+
+  a {
+    color:#333;
+    text-translateX(2px);
+    text-decoration:none
+  }
+
+  .logo{
+    transform:rotate(30deg);
+    &:hover {
+      animation:shake .82s cubic-bezier(.36,.07,.19,.97) both;
+      transform:rotate(30deg) backface-visibility: hidden;
+      perspective:1000px
+    }
+  }
+
+  ul {
+      list-style-type:none;
+      padding:0
+  }
+
+  li {
+      display:inline-block;
+      
+      &:hover {
+        text-decoration:underline;
+      }
+      
+      &:after {
+        margin: 5px;
+        content:'|';
+      }
+
+      &:last-child:after {
+        content: none;
+      }
+  }
+
+  @keyframes shake{
+      10%,90%{
+          transform:translate3d(-1px,0,0) rotate(30deg)
+      }
+      20%,80%{
+          transform:translate3d(2px,0,0) rotate(30deg)
+      }
+      30%,50%,70%{
+          transform:translate3d(-4px,0,0) rotate(30deg)
+      }
+      40%,60%{
+          transform:translate3d(4px,0,0) rotate(30deg)
+      }
+  }
+
 `;
 
 function App() {

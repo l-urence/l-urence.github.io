@@ -30,4 +30,4 @@ jobs:
         node-version: '14.x'
     - run: yarn install
     - run: yarn run build
-    - run: yarn run release -r it@github.com:mrlaessig/mrlaessig.github.io.git
+    - run: yarn run release -r git@github.com:mrlaessig/mrlaessig.github.io.git

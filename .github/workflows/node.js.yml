@@ -14,20 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Setup SSH Keys and known_hosts
-      env:
-        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
-        ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-        ssh-add - <<< "${{ secrets.DEPLOY_KEY }}"
-        git config user.name Deployment Job
-        git config user.email cheese@byteburgers.com
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Deploy GitHub Pages
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
     - run: yarn install
     - run: yarn run build
-    - run: yarn run release -r git@github.com:mrlaessig/mrlaessig.github.io.git
+    - run: yarn run release -r https://${{ secrets.GITHUB_TOKEN }}@github.com/mrlaessig/mrlaessig.github.io.git

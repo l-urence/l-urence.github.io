@@ -4,6 +4,7 @@ import {createGlobalStyle} from 'styled-components';
 
 import {Home} from './modules/home/components/Home';
 import {NotFound} from './modules/home/components/NotFound';
+import {FridayFivePm} from './modules/fridayfivepm/components/FridayFivePm';
 
 const GlobalStyle = createGlobalStyle`
   html,body{
@@ -26,6 +27,9 @@ export const App: FC = () => (
       <Switch>
         <Route exact={true} path="/">
           <Home />
+        </Route>
+        <Route exact path="/fridayfivepm">
+          <FridayFivePm />
         </Route>
         <Route>
           <NotFound />

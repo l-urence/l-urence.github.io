@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier"
+  ],
+  "linterOptions": {
+    "exclude": ["config/**/*.js", "node_modules/**/*.ts", "coverage/lcov-report/*.js"]
+  },
+  "rules": {
+    "prettier": true,
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-first",
+        "grouped-imports": true,
+        "groups": [
+          {"name": "react", "match": "^[^.].*", "order": 1},
+          {"name": "extra", "match": "^\\..*", "order": 2}
+        ]
+      }
+    ]
+  }
+}

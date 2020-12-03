@@ -27,7 +27,7 @@ jobs:
          yarn test
     - name: Build
       run: |
-        yarn run build
+        yarn build
         cp build/index.html build/404.html
-    - name: Reease
-      run: yarn run release -xr https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+    - name: Release
+      run: yarn release -xr https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY

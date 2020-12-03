@@ -1,7 +1,9 @@
 import React, {FC} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {createGlobalStyle} from 'styled-components';
 
 import {Home} from './modules/home/components/Home';
+import {NotFound} from './modules/home/components/NotFound';
 
 const GlobalStyle = createGlobalStyle`
   html,body{
@@ -20,7 +22,16 @@ const GlobalStyle = createGlobalStyle`
 
 export const App: FC = () => (
   <>
-    <Home />
+    <Router>
+      <Switch>
+        <Route exact={true} path="/">
+          <Home />
+        </Route>
+        <Route>
+          <NotFound />
+        </Route>
+      </Switch>
+    </Router>
     <GlobalStyle />
   </>
 );

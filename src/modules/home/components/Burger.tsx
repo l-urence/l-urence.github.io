@@ -1,6 +1,5 @@
 import React, {useEffect, FC} from 'react';
-import styled, {Keyframes} from 'styled-components';
-import {keyframes} from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 const shake = keyframes`
   10%,90%{
@@ -20,7 +19,7 @@ const shake = keyframes`
   }
 `;
 
-const Logo = styled.div`
+const Wrapper = styled.div`
   transform:rotate(30deg);
   
   &:hover {
@@ -28,6 +27,10 @@ const Logo = styled.div`
     transform:rotate(30deg) backface-visibility: hidden;
     perspective:1000px
   }
+`;
+
+const Text = styled.h1`
+  user-select: none;
 `;
 
 interface Props {
@@ -46,11 +49,11 @@ export const Burger: FC<Props> = ({text = 'Byteburgers'}) => {
   });
 
   return (
-    <Logo>
+    <Wrapper>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="85" width="300">
         <path d="M0 80 C40 0, 265 0, 295 80 Z" fill="transparent" stroke="#000000" id="bunTop" />
       </svg>
-      <h1>{text}</h1>
+      <Text>{text}</Text>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" id="bottomBuger">
         <path id="sin" stroke="black" fill="transparent" />
         <path
@@ -60,6 +63,6 @@ export const Burger: FC<Props> = ({text = 'Byteburgers'}) => {
           id="bunBottom"
         />
       </svg>
-    </Logo>
+    </Wrapper>
   );
 };

@@ -2,9 +2,9 @@ import React, {FC} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {createGlobalStyle} from 'styled-components';
 
+import {FridayFivePm} from './modules/fridayfivepm/components/FridayFivePm';
 import {Home} from './modules/home/components/Home';
 import {NotFound} from './modules/home/components/NotFound';
-import {FridayFivePm} from './modules/fridayfivepm/components/FridayFivePm';
 
 const GlobalStyle = createGlobalStyle`
   html,body{
@@ -28,7 +28,7 @@ export const App: FC = () => (
         <Route exact={true} path="/">
           <Home />
         </Route>
-        <Route exact path="/fridayfivepm">
+        <Route exact={true} path="/fridayfivepm">
           <FridayFivePm />
         </Route>
         <Route>

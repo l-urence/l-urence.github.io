@@ -1,5 +1,6 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState, FC} from 'react';
 import styled from 'styled-components';
+
 import {Countdown as CountdownModel} from '../models/Countdown';
 
 const Wrapper = styled.div`

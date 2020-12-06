@@ -2,6 +2,7 @@ import React, {useEffect, useState, FC} from 'react';
 import styled from 'styled-components';
 
 import {Countdown as CountdownModel} from '../models/Countdown';
+import {Pad} from './Pad';
 
 const Wrapper = styled.div`
   flex-direction: column;
@@ -39,13 +40,15 @@ const Countdown = styled.div`
   }
 `;
 
-function pad(nr: number): string {
-  const str = '0' + nr;
-  return str.slice(str.length - 2, str.length);
-}
+const countdown = CountdownModel.createCountdownForWeekDay(5);
 
 export const FridayFivePm: FC = () => {
-  const [countdown, setCountdown] = useState<CountdownModel>(new CountdownModel().tick());
+  const [
+    {
+      time: {hours, minutes, seconds},
+    },
+    setCountdown,
+  ] = useState<CountdownModel>(CountdownModel.createCountdownForWeekDay(5));
 
   useEffect(() => {
     const updateTimes = () => setCountdown(countdown.tick());
@@ -54,24 +57,29 @@ export const FridayFivePm: FC = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [countdown]);
+  }, []);
 
-  const {hours, minutes, seconds} = countdown;
   return (
     <Wrapper>
       <h2>Time till Friday 5pm:</h2>
       <Countdown>
         <div>
           <div>
-            <span>{pad(hours)}</span>
+            <span>
+              <Pad input={hours} />
+            </span>
             <label>Hours</label>
           </div>
           <div>
-            <span>{pad(minutes)}</span>
+            <span>
+              <Pad input={minutes} />
+            </span>
             <label>Minutes</label>
           </div>
           <div>
-            <span>{pad(seconds)}</span>
+            <span>
+              <Pad input={seconds} />
+            </span>
             <label>Seconds</label>
           </div>
         </div>

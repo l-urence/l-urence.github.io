@@ -1,32 +1,37 @@
-export interface CountdownProperties {
-  readonly seconds: number;
-  readonly minutes: number;
+export interface Time {
   readonly hours: number;
+  readonly minutes: number;
+  readonly seconds: number;
 }
 
-export class Countdown implements CountdownProperties {
-  readonly seconds;
-  readonly minutes;
-  readonly hours;
+export class Countdown {
+  readonly end;
+  readonly diff;
 
-  constructor(init?: CountdownProperties) {
-    this.seconds = init?.seconds || 0;
-    this.minutes = init?.minutes || 0;
-    this.hours = init?.hours || 0;
+  constructor(end: Date, start: Date = new Date()) {
+    this.end = end;
+    this.diff = this.end.getTime() - start.getTime();
+  }
+
+  static createCountdownForWeekDay(weekday: number): Countdown {
+    const end = new Date();
+    end.setDate(end.getDate() + ((7 + weekday - end.getDay()) % 7));
+    end.setHours(17);
+    end.setMinutes(0);
+    end.setSeconds(0);
+
+    return new Countdown(end);
   }
 
   public tick(): Countdown {
-    const date = new Date();
-    const resultDate = new Date(date.getTime());
-    resultDate.setDate(date.getDate() + ((7 + 5 - date.getDay()) % 7));
-    resultDate.setHours(17);
-    resultDate.setMinutes(0);
+    return new Countdown(this.end);
+  }
 
-    const diff = resultDate.getTime() - Date.now() - 1000;
-    return new Countdown({
-      hours: Math.floor(diff / (1000 * 60 * 60)),
-      minutes: Math.floor((diff / 1000 / 60) % 60),
-      seconds: 60 - new Date().getSeconds(),
-    });
+  get time(): Time {
+    return {
+      hours: Math.floor(this.diff / 1000 / 60 / 60),
+      minutes: Math.floor((this.diff / 1000 / 60) % 60),
+      seconds: Math.floor((this.diff / 1000) % 60),
+    };
   }
 }

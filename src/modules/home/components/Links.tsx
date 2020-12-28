@@ -40,5 +40,8 @@ export const Links: FC = () => (
     <ListItem>
       <Link href="https://github.com/mrlaessig">GitHub</Link>
     </ListItem>
+    <ListItem>
+      <Link href="/tgif">tgif</Link>
+    </ListItem>
   </List>
 );

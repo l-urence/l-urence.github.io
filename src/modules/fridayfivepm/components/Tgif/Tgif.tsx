@@ -1,8 +1,8 @@
 import React, {useEffect, useState, FC} from 'react';
 import styled from 'styled-components';
 
-import {Countdown as CountdownModel} from '../models/Countdown';
-import {Pad} from './Pad';
+import {Countdown as CountdownModel} from '../../models/Countdown';
+import {Pad} from '../Pad';
 
 const Wrapper = styled.div`
   flex-direction: column;
@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   font-size: 25px;
   height: 100%;
   justify-content: center;
+
   & h2 {
     text-align: center;
   }
@@ -27,7 +28,7 @@ const Countdown = styled.div`
     justify-content: center;
   }
 
-  & label {
+  & span:last-child {
     font-size: 20px;
     color: #999;
     padding-right: 5px;
@@ -40,18 +41,16 @@ const Countdown = styled.div`
   }
 `;
 
-const countdown = CountdownModel.createCountdownForWeekDay(5);
-
-export const FridayFivePm: FC = () => {
+export const Tgif: FC = () => {
   const [
     {
       time: {hours, minutes, seconds},
     },
     setCountdown,
-  ] = useState<CountdownModel>(CountdownModel.createCountdownForWeekDay(5));
+  ] = useState<CountdownModel>(CountdownModel.tgif());
 
   useEffect(() => {
-    const updateTimes = () => setCountdown(countdown.tick());
+    const updateTimes = () => setCountdown(CountdownModel.tgif());
     const interval = setInterval(updateTimes, 1000);
 
     return () => {
@@ -65,22 +64,22 @@ export const FridayFivePm: FC = () => {
       <Countdown>
         <div>
           <div>
-            <span>
+            <span title="Hours">
               <Pad input={hours} />
             </span>
-            <label>Hours</label>
+            <span>Hours</span>
           </div>
           <div>
-            <span>
+            <span title="Minutes">
               <Pad input={minutes} />
             </span>
-            <label>Minutes</label>
+            <span>Minutes</span>
           </div>
           <div>
-            <span>
+            <span title="Seconds">
               <Pad input={seconds} />
             </span>
-            <label>Seconds</label>
+            <span>Seconds</span>
           </div>
         </div>
       </Countdown>

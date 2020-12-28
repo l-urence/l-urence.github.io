@@ -13,18 +13,14 @@ export class Countdown {
     this.diff = this.end.getTime() - start.getTime();
   }
 
-  static createCountdownForWeekDay(weekday: number): Countdown {
+  public static tgif(): Countdown {
     const end = new Date();
-    end.setDate(end.getDate() + ((7 + weekday - end.getDay()) % 7));
+    end.setDate(end.getDate() + ((7 + 5 - end.getDay()) % 7));
     end.setHours(17);
     end.setMinutes(0);
     end.setSeconds(0);
 
     return new Countdown(end);
-  }
-
-  public tick(): Countdown {
-    return new Countdown(this.end);
   }
 
   get time(): Time {

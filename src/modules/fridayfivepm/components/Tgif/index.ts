@@ -1,0 +1,1 @@
+export {Tgif} from './Tgif';

@@ -2,12 +2,12 @@ import React, {FC} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {createGlobalStyle} from 'styled-components';
 
-import {FridayFivePm} from './modules/fridayfivepm/components/FridayFivePm';
+import {Tgif} from './modules/fridayfivepm/components/Tgif';
 import {Home} from './modules/home/components/Home';
 import {NotFound} from './modules/home/components/NotFound';
 
 const GlobalStyle = createGlobalStyle`
-  html,body{
+  html,body {
     color:#333;
     margin:0;
     padding:0;
@@ -28,8 +28,8 @@ export const App: FC = () => (
         <Route exact={true} path="/">
           <Home />
         </Route>
-        <Route exact={true} path="/fridayfivepm">
-          <FridayFivePm />
+        <Route exact={true} path="/tgif">
+          <Tgif />
         </Route>
         <Route>
           <NotFound />

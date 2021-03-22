@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 const List = styled.ul`
@@ -23,25 +24,33 @@ const ListItem = styled.li`
   }
 `;
 
-const Link = styled.a`
+const linkStyle = `
    color:#333;
    text-translateX(2px);
    text-decoration:none
 `;
 
+const GreyRouterLink = styled(Link)`
+  ${linkStyle}
+`;
+
+const GreyLink = styled.a`
+  ${linkStyle}
+`;
+
 export const Links: FC = () => (
   <List>
     <ListItem>
-      <Link href="mailto:cheese@byteburgers.com">cheese@byteburgers.com</Link>
+      <GreyLink href="mailto:cheese@byteburgers.com">cheese@byteburgers.com</GreyLink>
     </ListItem>
     <ListItem>
-      <Link href="cheese@byteburgers.com.asc">Pub-Key: 8B0E5F0E</Link>
+      <GreyLink href="cheese@byteburgers.com.asc">Pub-Key: 8B0E5F0E</GreyLink>
     </ListItem>
     <ListItem>
-      <Link href="https://github.com/mrlaessig">GitHub</Link>
+      <GreyLink href="https://github.com/mrlaessig">GitHub</GreyLink>
     </ListItem>
     <ListItem>
-      <Link href="/tgif">tgif</Link>
+      <GreyRouterLink to="/tgif">tgif</GreyRouterLink>
     </ListItem>
   </List>
 );

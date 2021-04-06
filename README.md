@@ -1,3 +1,3 @@
-# [byteburgers.com](//byteburgers.com) · ![Build and Release GH Page](https://github.com/mrlaessig/mrlaessig.github.io/workflows/Build%20and%20Release%20GH%20Page/badge.svg)
+# [byteburgers.com](//byteburgers.com) · [![Build and Release GH Page](https://github.com/mrlaessig/mrlaessig.github.io/actions/workflows/deploy-gh-page.yml/badge.svg?branch=master)](https://github.com/mrlaessig/mrlaessig.github.io/actions/workflows/deploy-gh-page.yml)
 
 Repo containing the [byteburgers.com](//byteburgers.com) webpage.

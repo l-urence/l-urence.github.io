@@ -52,5 +52,8 @@ export const Links: FC = () => (
     <ListItem>
       <GreyRouterLink to="/tgif">tgif</GreyRouterLink>
     </ListItem>
+    <ListItem>
+      <GreyRouterLink to="/autocomplete">autocomplete</GreyRouterLink>
+    </ListItem>
   </List>
 );

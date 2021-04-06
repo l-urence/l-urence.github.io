@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {createGlobalStyle} from 'styled-components';
 
+import {AutocompleteSnack} from './modules/autocomplete/components/AutocompleteSnack';
 import {Tgif} from './modules/fridayfivepm/components/Tgif';
 import {Home} from './modules/home/components/Home';
 import {NotFound} from './modules/home/components/NotFound';
@@ -30,6 +31,9 @@ export const App: FC = () => (
         </Route>
         <Route exact={true} path="/tgif">
           <Tgif />
+        </Route>
+        <Route exact={true} path="/autocomplete">
+          <AutocompleteSnack />
         </Route>
         <Route>
           <NotFound />

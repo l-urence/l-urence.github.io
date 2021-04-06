@@ -31,4 +31,4 @@ jobs:
         cp build/index.html build/404.html
     - name: Release
       if: ${{ github.ref == 'refs/heads/master' }}
-      run: yarn release -r https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+      run: yarn release -xr https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY

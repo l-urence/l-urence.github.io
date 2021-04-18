@@ -26,6 +26,8 @@ jobs:
          yarn lint
          yarn test
     - name: Build
+      env:
+        -  REACT_APP_SCRAPE_API: 'https://vollerei.uc.r.appspot.com/scrape'
       run: |
         yarn build
         cp build/index.html build/404.html

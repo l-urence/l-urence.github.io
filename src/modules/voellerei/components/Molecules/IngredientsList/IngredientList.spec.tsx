@@ -1,5 +1,6 @@
-import {IngredientsList} from './IngredientsList.components';
 import {render, screen, within} from '@testing-library/react';
+
+import {IngredientsList} from './IngredientsList.components';
 
 describe('<IngredientList />', () => {
   it('should render a list if ingredients', () => {

@@ -1,5 +1,5 @@
-import {RecipeScraper} from '../RecipeScraper';
 import {Recipe} from '../../../models';
+import {RecipeScraper} from '../RecipeScraper';
 
 const API = process.env.REACT_APP_SCRAPE_API ?? '';
 

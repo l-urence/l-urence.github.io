@@ -1,7 +1,8 @@
-import React, {FC, useState} from 'react';
+import React, {useState, FC} from 'react';
 import styled from 'styled-components';
-import {UrlInput} from '../../Atoms/UrlInput';
+
 import {Button} from '../../Atoms/Button';
+import {UrlInput} from '../../Atoms/UrlInput';
 
 const Wrapper = styled.form``;
 
@@ -17,9 +18,13 @@ export const SearchBar: FC<Props> = ({onSearch}) => {
     e.preventDefault();
   }
 
+  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setTerm(e.target.value);
+  }
+
   return (
     <Wrapper onSubmit={onSubmit} method="">
-      <UrlInput value={term} onChange={(e) => setTerm(e.target.value)} />
+      <UrlInput value={term} onChange={onChange} />
       <Button type="submit">Go</Button>
     </Wrapper>
   );

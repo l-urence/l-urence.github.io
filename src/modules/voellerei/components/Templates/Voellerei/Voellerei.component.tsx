@@ -1,5 +1,6 @@
 import {FC} from 'react';
 import styled from 'styled-components';
+
 import {Recipe} from '../../../models';
 import {IngredientsList} from '../../Molecules/IngredientsList';
 import {SearchBar} from '../../Molecules/SearchBar';

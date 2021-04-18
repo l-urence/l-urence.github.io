@@ -1,5 +1,5 @@
-import {scrapeRecipe} from './scrapeRecipe';
 import {data} from '../__moks__/recipe.json';
+import {scrapeRecipe} from './scrapeRecipe';
 
 const windowSpy = jest.spyOn(window, 'fetch');
 

@@ -1,0 +1,1 @@
+export {getRecipeScraper} from './RecipeScraper';

@@ -6,6 +6,7 @@ import {AutocompleteSnack} from './modules/autocomplete/components/AutocompleteS
 import {Tgif} from './modules/fridayfivepm/components/Tgif';
 import {Home} from './modules/home/components/Home';
 import {NotFound} from './modules/home/components/NotFound';
+import {Voellerei} from './modules/voellerei/components/Pages/Voellerei';
 
 const GlobalStyle = createGlobalStyle`
   html,body {
@@ -34,6 +35,9 @@ export const App: FC = () => (
         </Route>
         <Route exact={true} path="/autocomplete">
           <AutocompleteSnack />
+        </Route>
+        <Route exact={true} path="/voellerei">
+          <Voellerei />
         </Route>
         <Route>
           <NotFound />

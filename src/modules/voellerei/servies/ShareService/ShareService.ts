@@ -9,7 +9,7 @@ export class ShareService {
 
     navigator.share({
       url: 'https://byteburgers.com/voellerei',
-      text: '<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">',
+      text: `◦ Test`,
       title: recipe.title,
     });
   }

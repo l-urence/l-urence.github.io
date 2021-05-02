@@ -7,6 +7,7 @@ import {ListItem} from '../../Atoms/ListItem';
 const StyledList = styled(List)`
   list-style-type: none;
   text-align: left;
+  padding: 0;
 `;
 
 interface Props {

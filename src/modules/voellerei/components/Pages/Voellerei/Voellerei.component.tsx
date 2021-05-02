@@ -2,6 +2,7 @@ import {useState, FC} from 'react';
 
 import {getRecipeScraper} from '../../../gateways/RecipeScraper';
 import {Recipe} from '../../../models';
+import {ShareService} from '../../../servies/ShareService';
 import {Voellerei as VoellereiTemplate} from '../../Templates/Voellerei';
 
 const scapeRecipe = getRecipeScraper();
@@ -13,5 +14,5 @@ export const Voellerei: FC = () => {
     setRecipe(res);
   };
 
-  return <VoellereiTemplate recipe={recipe} onScrape={onScrape} />;
+  return <VoellereiTemplate recipe={recipe} onScrape={onScrape} onShare={ShareService.share} />;
 };

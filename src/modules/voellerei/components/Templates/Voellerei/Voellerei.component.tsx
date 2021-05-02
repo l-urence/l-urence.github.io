@@ -14,10 +14,11 @@ const Wrapper = styled.div`
 interface Props {
   recipe: Recipe | null;
   onScrape: (url: string) => void;
+  onShare: (recipe: Recipe) => void;
 }
 
-export const Voellerei: FC<Props> = ({recipe, onScrape}) => (
+export const Voellerei: FC<Props> = ({recipe, onScrape, onShare}) => (
   <Wrapper>
-    <ShoppingListCreator recipe={recipe} onScrape={onScrape} />
+    <ShoppingListCreator recipe={recipe} onScrape={onScrape} onShare={onShare} />
   </Wrapper>
 );

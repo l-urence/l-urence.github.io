@@ -9,7 +9,7 @@ export class ShareService {
 
     navigator.share({
       url: 'https://byteburgers.com/voellerei',
-      text: `◦ Test`,
+      text: `	◦	Mein Einkauf`,
       title: recipe.title,
     });
   }

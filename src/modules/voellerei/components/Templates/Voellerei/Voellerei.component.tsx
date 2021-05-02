@@ -2,10 +2,14 @@ import {FC} from 'react';
 import styled from 'styled-components';
 
 import {Recipe} from '../../../models';
-import {IngredientsList} from '../../Molecules/IngredientsList';
-import {SearchBar} from '../../Molecules/SearchBar';
+import {ShoppingListCreator} from '../../Organisms/ShoppingListCreator';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+`;
 
 interface Props {
   recipe: Recipe | null;
@@ -14,12 +18,6 @@ interface Props {
 
 export const Voellerei: FC<Props> = ({recipe, onScrape}) => (
   <Wrapper>
-    <SearchBar onSearch={onScrape} />
-    {recipe && (
-      <>
-        <h1>{recipe.title}</h1>
-        <IngredientsList ingredients={recipe.ingredients} />
-      </>
-    )}
+    <ShoppingListCreator recipe={recipe} onScrape={onScrape} />
   </Wrapper>
 );

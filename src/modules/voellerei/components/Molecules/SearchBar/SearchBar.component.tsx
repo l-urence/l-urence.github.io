@@ -2,9 +2,18 @@ import React, {useState, FC} from 'react';
 import styled from 'styled-components';
 
 import {Button} from '../../Atoms/Button';
-import {UrlInput} from '../../Atoms/UrlInput';
+import {Input} from '../../Atoms/Input';
 
-const Wrapper = styled.form``;
+const Wrapper = styled.form`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`;
+
+const SearchInput = styled(Input)`
+  margin: 0 5px;
+  flex: 1;
+`;
 
 interface Props {
   onSearch: (term: string) => void;
@@ -24,7 +33,7 @@ export const SearchBar: FC<Props> = ({onSearch}) => {
 
   return (
     <Wrapper onSubmit={onSubmit} method="">
-      <UrlInput value={term} onChange={onChange} />
+      <SearchInput value={term} onChange={onChange} />
       <Button type="submit">Go</Button>
     </Wrapper>
   );

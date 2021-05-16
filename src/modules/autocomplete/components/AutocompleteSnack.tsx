@@ -43,7 +43,7 @@ export const AutocompleteSnack: FC = () => {
   return (
     <Wrapper>
       <SnackContainer
-        data-snack-id="@mrlaessig/c0d9e1"
+        data-snack-id="@mrlaessig/rn-autocomplete-input-example"
         data-snack-platform="web"
         data-snack-preview="true"
         data-snack-theme="light"

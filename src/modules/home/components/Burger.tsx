@@ -1,4 +1,4 @@
-import React, {useEffect, FC} from 'react';
+import React, {useEffect, useState, FC} from 'react';
 import styled, {keyframes} from 'styled-components';
 
 const shake = keyframes`
@@ -38,15 +38,22 @@ interface Props {
 }
 
 export const Burger: FC<Props> = ({text = 'Byteburgers'}) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     const sinScript = document.createElement('script');
     sinScript.src = '/sin.js';
+    sinScript.onload = () => setIsLoaded(true);
 
     document.body.appendChild(sinScript);
     return () => {
       document.body.removeChild(sinScript);
     };
   });
+
+  if (!isLoaded) {
+    return null;
+  }
 
   return (
     <Wrapper>
